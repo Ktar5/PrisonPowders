@@ -1,4 +1,4 @@
-package com.minecave.powders.effect;
+package com.minecave.powders.item;
 
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffectType;
