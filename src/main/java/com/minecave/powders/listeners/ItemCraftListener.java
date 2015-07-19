@@ -13,5 +13,6 @@ public class ItemCraftListener implements Listener {
     @EventHandler
     public void onItemCraft(PrepareItemCraftEvent event){
         CraftingInventory inv = (CraftingInventory) event.getInventory();
+
     }
 }

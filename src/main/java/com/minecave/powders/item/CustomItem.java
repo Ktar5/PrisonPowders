@@ -2,6 +2,7 @@ package com.minecave.powders.item;
 
 import com.minecave.powders.recipe.Recipe;
 import com.minecave.powders.utils.ItemFactory;
+import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 
 import java.util.List;
@@ -11,22 +12,23 @@ import java.util.List;
  */
 public class CustomItem {
 
-    private List<PotionEffect> effects;
+    private String name;
+    private List<PotionEffect> startingEffects;
     private Recipe recipe;
-    private ItemFactory factory;
     private String definingLine; // The defining line of the lore
 
-    public CustomItem(List<PotionEffect> effects, Recipe recipe, ItemFactory factory, String definingLine){
-        this.effects = effects;
-        this.recipe = recipe;
-        this.factory = factory;
+    public CustomItem(String name, List<PotionEffect> startingEffects, ItemFactory factory, String definingLine) {
+        this.name = name;
+        this.startingEffects = startingEffects;
         this.definingLine = definingLine;
     }
 
-    public CustomItem(Recipe recipe, ItemFactory factory, String definingLine){
-        this(null, recipe, factory, definingLine);
+    public void loadRecipe(Recipe recipe){
+        this.recipe = recipe;
     }
 
-
+    public void use(Player player){
+        player.addPotionEffects(startingEffects);
+    }
 
 }

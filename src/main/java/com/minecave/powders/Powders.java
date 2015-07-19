@@ -17,8 +17,6 @@ public class Powders extends JavaPlugin implements Listener{
     private CustomConfig items;
     @Getter
     private CustomConfig messages;
-    @Getter
-    private CustomConfig recipes;
 
     @Override
     public void onEnable(){

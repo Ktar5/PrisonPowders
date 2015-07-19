@@ -1,26 +1,55 @@
 package com.minecave.powders.recipe;
 
-import lombok.Getter;
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
- * Created by Carter on 7/15/2015.
+ * Created by Carter on 7/17/2015.
  */
 public class Recipe {
 
-    private RecipeMatrix matrix;
-    @Getter
-    private ShapedRecipe bukkitShapedRecipe;
+    private Map<RecipeSpot, ItemStack> itemList;
+    private ItemStack endItem;
 
+    public Recipe(ItemStack endItem){
+        itemList = new HashMap<>();
+        this.endItem = endItem;
+        for(RecipeSpot spot : RecipeSpot.values()){
+            itemList.put(spot, new ItemStack(Material.AIR));
+        }
+    }
 
-    public Recipe(RecipeMatrix matrix, ItemStack stack){
-        bukkitShapedRecipe = matrix.toShapedRecipe(stack);
+    public void put(RecipeSpot spot, ItemStack stack){
+        itemList.replace(spot, stack);
+    }
+
+    public ShapedRecipe toShapedRecipe() {
+        ShapedRecipe recipe = new ShapedRecipe(endItem);
+        recipe.shape("ABC", "DEF", "GHI");
+        char c = 'A';
+        for (int i = 0; i < RecipeSpot.values().length; i++) {
+            recipe.setIngredient((char) (c + i), itemList.get(RecipeSpot.values()[i]).getType());
+        }
+        return recipe;
+    }
+
+    public ItemStack[] toItemStackArray(){
+        ItemStack[] stack = new ItemStack[9];
+        int i = 0;
+        for(RecipeSpot spot : RecipeSpot.values()){
+            stack[i] = itemList.get(spot);
+            i++;
+        }
+        return stack;
     }
 
     public boolean compareTo(ItemStack[] given){
-        ItemStack[] recipe = matrix.toItemStackArray();
+        ItemStack[] recipe = this.toItemStackArray();
         for(int i = 0 ; i <  9 ; i++){
             if(!areItemsEqual(recipe[i], given[i])){
                 return false;
@@ -44,4 +73,5 @@ public class Recipe {
         }
         return false;
     }
+
 }
