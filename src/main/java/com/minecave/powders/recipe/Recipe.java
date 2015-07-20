@@ -14,11 +14,9 @@ import java.util.Map;
 public class Recipe {
 
     private Map<RecipeSpot, ItemStack> itemList;
-    private ItemStack endItem;
 
-    public Recipe(ItemStack endItem){
+    public Recipe(){
         itemList = new HashMap<>();
-        this.endItem = endItem;
         for(RecipeSpot spot : RecipeSpot.values()){
             itemList.put(spot, new ItemStack(Material.AIR));
         }
@@ -28,7 +26,7 @@ public class Recipe {
         itemList.replace(spot, stack);
     }
 
-    public ShapedRecipe toShapedRecipe() {
+    public ShapedRecipe toShapedRecipe(ItemStack endItem) {
         ShapedRecipe recipe = new ShapedRecipe(endItem);
         recipe.shape("ABC", "DEF", "GHI");
         char c = 'A';

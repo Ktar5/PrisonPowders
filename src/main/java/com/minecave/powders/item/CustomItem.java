@@ -4,6 +4,7 @@ import com.minecave.powders.recipe.Recipe;
 import com.minecave.powders.utils.ItemFactory;
 import lombok.Getter;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 
 import java.util.List;
@@ -17,10 +18,13 @@ public class CustomItem {
     private String name; //The reference to the item for use in Recipes
     private List<PotionEffect> startingEffects; //The effects to be applied when the player uses the item
     @Getter
-    private Recipe recipe; //Contains the recipe as well as the actual item stack that player is given
+    private Recipe recipe; //Contains the recipe
+    @Getter
+    private ItemStack endItem;
 
-    public CustomItem(String name, List<PotionEffect> startingEffects, ItemFactory factory) {
+    public CustomItem(String name, List<PotionEffect> startingEffects, ItemStack stack, ItemFactory factory) {
         this.name = name;
+        this.endItem = stack;
         this.startingEffects = startingEffects;
     }
 
@@ -31,5 +35,4 @@ public class CustomItem {
     public void use(Player player){
         player.addPotionEffects(startingEffects);
     }
-
 }

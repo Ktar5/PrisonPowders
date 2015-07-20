@@ -1,0 +1,12 @@
+itemName:
+  material: APPLE
+  display-name:
+  amount:
+  glows:
+  meta-value:
+  lore:
+  - "test"
+  - "tst2"
+  effects:
+  - "SWIFTNESS,5,5,5"
+

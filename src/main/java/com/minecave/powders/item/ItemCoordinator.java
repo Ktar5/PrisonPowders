@@ -1,5 +1,6 @@
 package com.minecave.powders.item;
 
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ShapedRecipe;
 
 import java.util.HashMap;
@@ -14,6 +15,7 @@ public class ItemCoordinator {
 
     public ItemCoordinator(){
         itemMap = new HashMap<>();
+        loadItems();
     }
 
     public CustomItem getByName(String name){
@@ -34,7 +36,7 @@ public class ItemCoordinator {
 
     }
 
-    private void loadItem(){
+    private void loadItem(ConfigurationSection section){
 
     }
 

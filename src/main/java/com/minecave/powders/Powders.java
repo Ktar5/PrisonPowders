@@ -25,9 +25,8 @@ public class Powders extends JavaPlugin implements Listener{
     @Override
     public void onEnable(){
         instance = this;
-        //items = new CustomConfig(getDataFolder(), "items.yml");
-        //recipes = new CustomConfig(getDataFolder(), "recipes.yml");
-        //messages = new CustomConfig(getDataFolder(), "messages.yml");
+        items = new CustomConfig(getDataFolder(), "items.yml");
+        messages = new CustomConfig(getDataFolder(), "messages.yml");
         getServer().getPluginManager().registerEvents(new ItemCraftListener(),this);
         getServer().getPluginManager().registerEvents(new RightClickListener(),this);
         itemCoordinator = new ItemCoordinator();
