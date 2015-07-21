@@ -27,8 +27,18 @@ public class CustomItem {
         this.startingEffects = startingEffects;
     }
 
+    public CustomItem(String name, ItemStack stack) {
+        this.name = name;
+        this.endItem = stack;
+        this.startingEffects = null;
+    }
+
     public void loadRecipe(Recipe recipe){
         this.recipe = recipe;
+    }
+
+    public boolean hasEffects(){
+        return startingEffects == null;
     }
 
     public void use(Player player){

@@ -19,22 +19,24 @@ public class RightClickListener implements Listener{
 
     @EventHandler
     public void onPlayerRightClick(PlayerInteractEvent event){
-        if(event.getAction().toString().contains("RIGHT")){
-            ItemStack stack = event.getItem();
-            if(stack != null){
-                if(stack.hasItemMeta()){
-                    if(stack.getItemMeta().hasLore()){
-                        List<String> lore = stack.getItemMeta().getLore();
-                        if(lore.size() > 0){
-                            String line = ChatColor.stripColor(lore.get(0));
-                            CustomItem item = Powders.getInstance().getItemCoordinator().getByName(line);
-                            if(item != null){
-                                item.use(event.getPlayer());
-                                event.getPlayer().sendMessage(Messages.get("message.use." + item.getName().toLowerCase()));
-                                if(stack.getAmount() == 1){
-                                    event.getItem().setType(Material.AIR);
-                                }else{
-                                    stack.setAmount(stack.getAmount()-1);
+        if(event.getPlayer().hasPermission("powders.use")) {
+            if (event.getAction().toString().contains("RIGHT")) {
+                ItemStack stack = event.getItem();
+                if (stack != null) {
+                    if (stack.hasItemMeta()) {
+                        if (stack.getItemMeta().hasLore()) {
+                            List<String> lore = stack.getItemMeta().getLore();
+                            if (lore.size() > 0) {
+                                String line = ChatColor.stripColor(lore.get(0));
+                                CustomItem item = Powders.getInstance().getItemCoordinator().getByName(line);
+                                if (item != null) {
+                                    item.use(event.getPlayer());
+                                    event.getPlayer().sendMessage(Messages.get("message.use." + item.getName().toLowerCase()));
+                                    if (stack.getAmount() == 1) {
+                                        event.getItem().setType(Material.AIR);
+                                    } else {
+                                        stack.setAmount(stack.getAmount() - 1);
+                                    }
                                 }
                             }
                         }
