@@ -30,6 +30,7 @@ public class RecipeLoader {
                 stringMatrix[i] = list.get(i).split(Pattern.quote(","));
             }
             Recipe recipe = loadRecipe(stringMatrix, entry.getKey());
+            entry.getValue().loadRecipe(recipe);
             itemMap.put(recipe.toShapedRecipe(entry.getValue().getEndItem()), entry.getValue());
         }
         items = null;
