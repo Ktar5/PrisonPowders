@@ -26,6 +26,7 @@ public class ItemFactory {
 	}
 
 	public ItemFactory setLore(List<String> lore){
+		if(lore == null) return this;
 		ItemMeta meta = getMeta();
 		meta.setLore(StringUtil.colorList(lore));
 		itemStack.setItemMeta(meta);
@@ -70,7 +71,8 @@ public class ItemFactory {
 	 * Sets the glow that you get when you enchant an item without enchanting
 	 * an item
 	 */
-	public ItemFactory addGlow(){
+	public ItemFactory addGlow(boolean boo){
+		if(!boo) return this;
 		this.addEnchantment(Enchantment.OXYGEN, 1);
 		itemStack.getItemMeta().addItemFlags(ItemFlag.HIDE_ENCHANTS);
 		return this;
