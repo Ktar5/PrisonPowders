@@ -19,7 +19,7 @@ public class RecipeLoader {
 
     static private Map<String, CustomItem> items;
 
-    public static Map<ShapedRecipe, CustomItem> loadRecipes(HashMap<String, CustomItem> itemz){
+    public static Map<ShapedRecipe, CustomItem> loadRecipes(Map<String, CustomItem> itemz){
         items = itemz;
         Map<ShapedRecipe, CustomItem> itemMap = new HashMap<>();
         FileConfiguration config = Powders.getInstance().getItems().getConfig();
