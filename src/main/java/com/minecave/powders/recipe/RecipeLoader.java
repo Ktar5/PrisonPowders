@@ -2,6 +2,7 @@ package com.minecave.powders.recipe;
 
 import com.minecave.powders.Powders;
 import com.minecave.powders.item.CustomItem;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
@@ -31,7 +32,9 @@ public class RecipeLoader {
             }
             Recipe recipe = loadRecipe(stringMatrix, entry.getKey());
             entry.getValue().loadRecipe(recipe);
-            itemMap.put(recipe.toShapedRecipe(entry.getValue().getEndItem()), entry.getValue());
+            ShapedRecipe shapedRecipe = recipe.toShapedRecipe(entry.getValue().getEndItem());
+            Bukkit.getServer().addRecipe(shapedRecipe);
+            itemMap.put(shapedRecipe, entry.getValue());
         }
         items = null;
         return itemMap;
