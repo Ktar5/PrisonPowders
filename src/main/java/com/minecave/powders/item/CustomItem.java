@@ -1,7 +1,6 @@
 package com.minecave.powders.item;
 
 import com.minecave.powders.recipe.Recipe;
-import com.minecave.powders.utils.ItemFactory;
 import lombok.Getter;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -22,7 +21,7 @@ public class CustomItem {
     @Getter
     private ItemStack endItem;
 
-    public CustomItem(String name, List<PotionEffect> startingEffects, ItemStack stack, ItemFactory factory) {
+    public CustomItem(String name, List<PotionEffect> startingEffects, ItemStack stack) {
         this.name = name;
         this.endItem = stack;
         this.startingEffects = startingEffects;
