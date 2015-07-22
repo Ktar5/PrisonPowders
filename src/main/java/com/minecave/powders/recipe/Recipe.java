@@ -57,7 +57,7 @@ public class Recipe {
     }
 
     public boolean areItemsEqual(ItemStack s1, ItemStack s2) {
-        if (s1.getType().equals(s2.getType()) && s1.getAmount() == s2.getAmount()) {
+        if (s1.getType().equals(s2.getType())) {
             if (s1.getDurability() == s2.getDurability() && s1.getEnchantments().equals(s2.getEnchantments())) {
                 if (s1.hasItemMeta() && s2.hasItemMeta()) {
                     ItemMeta m1 = s1.getItemMeta();
