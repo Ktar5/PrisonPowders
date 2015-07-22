@@ -6,6 +6,7 @@ import org.bukkit.inventory.ShapedRecipe;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * Created by Carter on 7/17/2015.
@@ -48,7 +49,6 @@ public class Recipe {
     public boolean compareTo(ItemStack[] given){
         ItemStack[] recipe = this.toItemStackArray();
         for(int i = 0 ; i <  9 ; i++){
-            System.out.println(i);
             if(!areItemsEqual(recipe[i], given[i])){
                 return false;
             }
@@ -57,16 +57,7 @@ public class Recipe {
     }
 
     public boolean areItemsEqual(ItemStack s1, ItemStack s2) {
-        if (s1.getType().equals(s2.getType())) {
-            if (s1.getDurability() == s2.getDurability() /*&& s1.getEnchantments().equals(s2.getEnchantments())*/) {
-                if (s1.hasItemMeta() && s2.hasItemMeta()) {
-                    return s1.getItemMeta().equals(s2.getItemMeta());
-                }else if(!s1.hasItemMeta() && !s2.hasItemMeta()){
-                    return true;
-                }
-            }
-        }
-        return false;
+        return s1.equals(s2) || s1.toString().equals(s2.toString().split(Pattern.quote(", internal"))[0] + "}}");
     }
 
 }

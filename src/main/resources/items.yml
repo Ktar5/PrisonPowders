@@ -1,12 +1,32 @@
-itemName:
+glow-apple:
   material: APPLE
-  display-name:
-  amount:
-  glows:
-  meta-value:
+  display-name: "glow apple"
+  amount: 1
+  glows: true
+  meta-value: 0
   lore:
-  - "test"
-  - "tst2"
+    - "test"
+    - "tst2"
   effects:
-  - "SWIFTNESS,5,5"
+    - "INVISIBILITY,50,1"
+  recipe:
+    - "APPLE,APPLE,APPLE"
+    - "APPLE,GOLD_BLOCK,APPLE"
+    - "APPLE,APPLE,APPLE"
+super-glow-apple:
+  material: APPLE
+  display-name: "super gold apple"
+  amount: 1
+  glows: true
+  meta-value: 0
+  lore:
+    - "test"
+    - "tst2"
+  effects:
+    - "INVISIBILITY,50,1"
+    - "HEALTH_BOOST,50,2"
+  recipe:
+    - "APPLE,APPLE,APPLE"
+    - "APPLE,glow-apple,APPLE"
+    - "APPLE,APPLE,APPLE"
 

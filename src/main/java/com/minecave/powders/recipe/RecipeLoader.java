@@ -45,7 +45,6 @@ public class RecipeLoader {
         Recipe recipe = new Recipe();
         for(String[] strings : stringMatrix){
             for(String string : strings){
-                System.out.println(string);
                 if(string.toUpperCase().equals(string)){
                     recipe.put(RecipeSpot.values()[i++], new ItemStack(Material.getMaterial(string)));
                 }else{

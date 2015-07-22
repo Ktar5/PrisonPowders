@@ -17,10 +17,8 @@ public class ItemCraftListener implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onItemCraft(PrepareItemCraftEvent event){
         if((event.getView().getPlayer()).hasPermission("powders.craft")){
-            System.out.println("m");
             CraftingInventory inv = event.getInventory();
             if (event.getRecipe() instanceof ShapedRecipe) {
-                System.out.println("yeh");
                 if(event.getRecipe().getResult().hasItemMeta()){
                     if(event.getRecipe().getResult().getItemMeta().hasLore()){
                         String string = event.getRecipe().getResult().getItemMeta().getLore().get(0);
