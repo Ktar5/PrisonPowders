@@ -4,7 +4,6 @@ import com.minecave.powders.Powders;
 import com.minecave.powders.item.CustomItem;
 import com.minecave.powders.utils.Messages;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -34,7 +33,7 @@ public class RightClickListener implements Listener{
                                     item.use(event.getPlayer());
                                     event.getPlayer().sendMessage(Messages.get("message.use." + item.getName().toLowerCase()));
                                     if (stack.getAmount() == 1) {
-                                        event.getItem().setType(Material.AIR);
+                                        event.getPlayer().setItemInHand(null);
                                     } else {
                                         stack.setAmount(stack.getAmount() - 1);
                                     }
