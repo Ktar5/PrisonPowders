@@ -7,6 +7,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -20,7 +21,7 @@ public class RightClickListener implements Listener{
     @EventHandler
     public void onPlayerRightClick(PlayerInteractEvent event){
         if(event.getPlayer().hasPermission("powders.use")) {
-            if (event.getAction().toString().contains("RIGHT")) {
+            if (event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
                 ItemStack stack = event.getItem();
                 if (stack != null) {
                     if (stack.hasItemMeta()) {
@@ -44,5 +45,9 @@ public class RightClickListener implements Listener{
                 }
             }
         }
+    }
+
+    public void onPlayer(){
+
     }
 }

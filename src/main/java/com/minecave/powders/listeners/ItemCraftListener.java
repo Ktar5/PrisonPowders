@@ -2,8 +2,8 @@ package com.minecave.powders.listeners;
 
 import com.minecave.powders.Powders;
 import com.minecave.powders.item.CustomItem;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.inventory.CraftingInventory;
@@ -14,17 +14,21 @@ import org.bukkit.inventory.ShapedRecipe;
  */
 public class ItemCraftListener implements Listener {
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onItemCraft(PrepareItemCraftEvent event){
-        if(event.getView().getPlayer() instanceof Player){
-            if(((Player) event.getView().getPlayer()).hasPermission("powders.craft")){
-                CraftingInventory inv = event.getInventory();
-                if (event.getRecipe() instanceof ShapedRecipe) {
-                    ShapedRecipe recipe = (ShapedRecipe) event.getRecipe();
-                    CustomItem item = Powders.getInstance().getItemCoordinator().getByRecipe(recipe);
-                    if (item != null) {
-                        if (!item.getRecipe().compareTo(inv.getMatrix())) {
-                            inv.setResult(null);
+        if((event.getView().getPlayer()).hasPermission("powders.craft")){
+            System.out.println("m");
+            CraftingInventory inv = event.getInventory();
+            if (event.getRecipe() instanceof ShapedRecipe) {
+                System.out.println("yeh");
+                if(event.getRecipe().getResult().hasItemMeta()){
+                    if(event.getRecipe().getResult().getItemMeta().hasLore()){
+                        String string = event.getRecipe().getResult().getItemMeta().getLore().get(0);
+                        CustomItem item = Powders.getInstance().getItemCoordinator().getByName(string.toLowerCase());
+                        if (item != null) {
+                            if (!item.getRecipe().compareTo(inv.getMatrix())) {
+                                inv.setResult(null);
+                            }
                         }
                     }
                 }

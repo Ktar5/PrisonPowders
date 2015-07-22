@@ -47,26 +47,32 @@ public class ItemCoordinator {
         FileConfiguration config = Powders.getInstance().getItems().getConfig();
         for(String string : config.getKeys(false)){
             ConfigurationSection section = config.getConfigurationSection(string);
-            preItemMap.put(section.getName().toLowerCase(), loadItem(section));
+            preItemMap.put(string, loadItem(section, string));
         }
         itemMap = RecipeLoader.loadRecipes(preItemMap);
     }
 
-    private CustomItem loadItem(ConfigurationSection section) {
+    private CustomItem loadItem(ConfigurationSection section, String name) {
         ItemFactory factory =
                 new ItemFactory(Material.AIR)
                         .setMaterial(Material.valueOf(section.getString("material").toUpperCase()))
                         .setDisplayName(section.getString("display-name", null))
                         .setAmount(section.getInt("amount", 1))
                         .setDurability(section.getInt("meat-value", 0))
-                        .setLore(section.getStringList("lore"))
                         .addGlow(section.getBoolean("glows", false));
+        List<String> string = new ArrayList<>();
+        string.add(name);
+        List<String> lore = section.getStringList("lore");
+        if(lore != null){
+            string.addAll(lore);
+        }
+        factory.setLore(string);
 
         if (section.getStringList("effects") != null) {
             List<PotionEffect> effectList = new ArrayList<>();
             List<String> effects = section.getStringList("effects");
-            for (String string : effects) {
-                String[] effectParts = string.split(Pattern.quote(","));
+            for (String effectString : effects) {
+                String[] effectParts = effectString.split(Pattern.quote(","));
                 effectList.add(new PotionEffect(
                         PotionEffectType.getByName(effectParts[0]),
                         Integer.valueOf(effectParts[1]),

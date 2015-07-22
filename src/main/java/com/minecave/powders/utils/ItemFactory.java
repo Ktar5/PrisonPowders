@@ -74,7 +74,9 @@ public class ItemFactory {
 	public ItemFactory addGlow(boolean boo){
 		if(!boo) return this;
 		this.addEnchantment(Enchantment.OXYGEN, 1);
-		itemStack.getItemMeta().addItemFlags(ItemFlag.HIDE_ENCHANTS);
+		ItemMeta meta = itemStack.getItemMeta();
+		meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+		itemStack.setItemMeta(meta);
 		return this;
 	}
 

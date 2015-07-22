@@ -25,7 +25,7 @@ public class RecipeLoader {
         Map<ShapedRecipe, CustomItem> itemMap = new HashMap<>();
         FileConfiguration config = Powders.getInstance().getItems().getConfig();
         for(Map.Entry<String, CustomItem> entry : items.entrySet()){
-            List<String> list = config.getStringList(entry.getKey() + " .recipe");
+            List<String> list = config.getStringList(entry.getKey() + ".recipe");
             String[][] stringMatrix = new String[3][3];
             for(int i = 0 ; i < list.size() ; i++){
                 stringMatrix[i] = list.get(i).split(Pattern.quote(","));
@@ -45,10 +45,11 @@ public class RecipeLoader {
         Recipe recipe = new Recipe();
         for(String[] strings : stringMatrix){
             for(String string : strings){
+                System.out.println(string);
                 if(string.toUpperCase().equals(string)){
                     recipe.put(RecipeSpot.values()[i++], new ItemStack(Material.getMaterial(string)));
                 }else{
-                    recipe.put(RecipeSpot.values()[i++], items.get(name).getEndItem());
+                    recipe.put(RecipeSpot.values()[i++], items.get(string).getEndItem());
                 }
             }
         }

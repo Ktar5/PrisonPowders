@@ -3,7 +3,6 @@ package com.minecave.powders.recipe;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -49,6 +48,7 @@ public class Recipe {
     public boolean compareTo(ItemStack[] given){
         ItemStack[] recipe = this.toItemStackArray();
         for(int i = 0 ; i <  9 ; i++){
+            System.out.println(i);
             if(!areItemsEqual(recipe[i], given[i])){
                 return false;
             }
@@ -58,15 +58,12 @@ public class Recipe {
 
     public boolean areItemsEqual(ItemStack s1, ItemStack s2) {
         if (s1.getType().equals(s2.getType())) {
-            if (s1.getDurability() == s2.getDurability() && s1.getEnchantments().equals(s2.getEnchantments())) {
+            if (s1.getDurability() == s2.getDurability() /*&& s1.getEnchantments().equals(s2.getEnchantments())*/) {
                 if (s1.hasItemMeta() && s2.hasItemMeta()) {
-                    ItemMeta m1 = s1.getItemMeta();
-                    ItemMeta m2 = s2.getItemMeta();
-                    if (m1.getLore().equals(m2.getLore()) && m1.getDisplayName().equals(m2.getDisplayName())
-                            && m1.getItemFlags().equals(m2.getItemFlags())) {
-                        return true;
-                    }
-                }else return true;
+                    return s1.getItemMeta().equals(s2.getItemMeta());
+                }else if(!s1.hasItemMeta() && !s2.hasItemMeta()){
+                    return true;
+                }
             }
         }
         return false;
