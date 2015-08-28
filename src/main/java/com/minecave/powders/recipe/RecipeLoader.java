@@ -46,7 +46,16 @@ public class RecipeLoader {
         for(String[] strings : stringMatrix){
             for(String string : strings){
                 if(string.toUpperCase().equals(string)){
-                    recipe.put(RecipeSpot.values()[i++], new ItemStack(Material.getMaterial(string)));
+                    if(string.contains(Pattern.quote(":"))){
+                        String[] item = string.split(Pattern.quote(":"));
+                        ItemStack stack = new ItemStack(
+                                Material.getMaterial(item[0].toUpperCase()),
+                                1,
+                                Short.valueOf(item[1]));
+                        recipe.put(RecipeSpot.values()[i++], stack);
+                    }else{
+                        recipe.put(RecipeSpot.values()[i++], new ItemStack(Material.getMaterial(string)));
+                    }
                 }else{
                     recipe.put(RecipeSpot.values()[i++], items.get(string).getEndItem());
                 }

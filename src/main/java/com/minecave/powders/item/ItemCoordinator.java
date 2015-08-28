@@ -75,7 +75,7 @@ public class ItemCoordinator {
                 String[] effectParts = effectString.split(Pattern.quote(","));
                 effectList.add(new PotionEffect(
                         PotionEffectType.getByName(effectParts[0]),
-                        Integer.valueOf(effectParts[1]),
+                        Integer.valueOf(effectParts[1]) * 20,
                         Integer.valueOf(effectParts[2])));
             }
             return new CustomItem(section.getName().toLowerCase(), effectList, factory.getItemStack());

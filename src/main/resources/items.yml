@@ -1,32 +1,167 @@
-glow-apple:
-  material: APPLE
-  display-name: "glow apple"
+sugar-wheat:
+  material: WHEAT
+  display-name: "&aSugar Wheat"
   amount: 1
   glows: true
   meta-value: 0
   lore:
-    - "test"
-    - "tst2"
-  effects:
-    - "INVISIBILITY,50,1"
+    - "&fGoes in the &l&TOP LEFT&r&f of powder crafting"
   recipe:
-    - "APPLE,APPLE,APPLE"
-    - "APPLE,GOLD_BLOCK,APPLE"
-    - "APPLE,APPLE,APPLE"
-super-glow-apple:
-  material: APPLE
-  display-name: "super gold apple"
+    - "SUGAR,SUGAR,SUGAR"
+    - "WHEAT,WHEAT,WHEAT"
+    - "SUGAR,SUGAR,SUGAR"
+mumpkin:
+  material: PUMPKIN
+  display-name: "&aMumpkin"
   amount: 1
   glows: true
   meta-value: 0
   lore:
-    - "test"
-    - "tst2"
-  effects:
-    - "INVISIBILITY,50,1"
-    - "HEALTH_BOOST,50,2"
+    - "&fGoes in the &l&TOP RIGHT&r&f of powder crafting"
   recipe:
-    - "APPLE,APPLE,APPLE"
-    - "APPLE,glow-apple,APPLE"
-    - "APPLE,APPLE,APPLE"
+    - "MELON_SEEDS,MELON_SEEDS,MELON_SEEDS"
+    - "PUMPKIN_SEEDS,PUMPKIN_SEEDS,PUMPKIN_SEEDS"
+    - "MELON_SEEDS,MELON_SEEDS,MELON_SEEDS"
+potarrot:
+  material: CARROT
+  display-name: "&aPotarrot"
+  amount: 1
+  glows: true
+  meta-value: 0
+  lore:
+    - "&fGoes in the &l&bMIDDLE&r&f of powder crafting"
+  recipe:
+    - "POTATO,POTATO,POTATO"
+    - "CARROT,CARROT,CARROT"
+    - "POTATO,POTATO,POTATO"
+cocoa-warts:
+  material: INK_SACK
+  display-name: "&aCocoa Warts"
+  amount: 1
+  glows: true
+  meta-value: 3
+  lore:
+    - "&fGoes in the &l&bBOTTOM LEFT&r&f of powder crafting"
+  recipe:
+    - "INK_SACK:3,INK_SACK:3,INK_SACK:3"
+    - "NETHER_WARTS,NETHER_WARTS,NETHER_WARTS"
+    - "INK_SACK:3,INK_SACK:3,INK_SACK:3"
+shroomtus:
+  material: BROWN_MUSHROOM
+  display-name: "&aShroomtus"
+  amount: 1
+  glows: true
+  meta-value: 0
+  lore:
+    - "&fGoes in the &l&bBOTTOM RIGHT&r&f of powder crafting"
+  recipe:
+    - "BROWN_MUSHROOM,BROWN_MUSHROOM,BROWN_MUSHROOM"
+    - "RED_MUSHROOM,RED_MUSHROOM,RED_MUSHROOM"
+    - "CACTUS,CACTUS,CACTUS"
+prunus:
+  material: INK_SACK
+  display-name: "&bPrunus Powder"
+  amount: 1
+  glows: true
+  meta-value: 0
+  effects:
+    - "SLOW,120,1"
+    - "HUNGER,45,2"
+    - "DAMAGE_RESISTANCE, 150, 2"
+  recipe:
+    - "sugar-wheat,INK_SACK,mumpkin"
+    - "POISONOUS_POTATO,potarrot,POISONOUS_POTATO"
+    - "cocoa-warts,INK_SACK,shroomtus"
+xale:
+  material: INK_SACK
+  display-name: "&bXale Powder"
+  amount: 1
+  glows: true
+  meta-value: 11
+  effects:
+    - "INCREASE_DAMAGE,45,2"
+    - "SPEED,110,2"
+  recipe:
+    - "sugar-wheat,INK_SACK:11,mumpkin"
+    - "INK_SACK:11,potarrot,INK_SACK:11"
+    - "cocoa-warts,INK_SACK:11,shroomtus"
+duku:
+  material: INK_SACK
+  display-name: "&bDuku Powder"
+  amount: 1
+  glows: true
+  meta-value: 1
+  effects:
+    - "SLOW,25,3"
+    - "CONFUSION,25,2"
+  recipe:
+    - "sugar-wheat,INK_SACK:1,mumpkin"
+    - "INK_SACK:1,potarrot,INK_SACK:1"
+    - "cocoa-warts,INK_SACK:1,shroomtus"
+synse:
+  material: INK_SACK
+  display-name: "&bSynse Powder"
+  amount: 1
+  glows: true
+  meta-value: 8
+  effects:
+    - "INCREASE_DAMAGE,50,1"
+    - "DAMAGE_RESISTANCE,50,2"
+  recipe:
+    - "sugar-wheat,INK_SACK:7,mumpkin"
+    - "INK_SACK:12,potarrot,INK_SACK:12"
+    - "cocoa-warts,INK_SACK:7,shroomtus"
+melo:
+  material: INK_SACK
+  display-name: "&bMelo Powder"
+  amount: 1
+  glows: true
+  meta-value: 13
+  effects:
+    - "INCREASE_DAMAGE,50,1"
+    - "BLINDNESS,40,2"
+  recipe:
+    - "sugar-wheat,INK_SACK:13,mumpkin"
+    - "INK_SACK:13,potarrot,INK_SACK:13"
+    - "cocoa-warts,INK_SACK:13,shroomtus"
+balak:
+  material: INK_SACK
+  display-name: "&bBalak Powder"
+  amount: 1
+  glows: true
+  meta-value: 7
+  effects:
+    - "SPEED,150,2"
+    - "BLINDNESS,35,3"
+  recipe:
+    - "sugar-wheat,INK_SACK:7,mumpkin"
+    - "INK_SACK:7,potarrot,INK_SACK:7"
+    - "cocoa-warts,INK_SACK:7,shroomtus"
+lubus:
+  material: INK_SACK
+  display-name: "&bLubus Powder"
+  amount: 1
+  glows: true
+  meta-value: 9
+  effects:
+    - "CONFUSION,20,2"
+    - "JUMP,40,3"
+  recipe:
+    - "sugar-wheat,INK_SACK:9,mumpkin"
+    - "INK_SACK:9,potarrot,INK_SACK:9"
+    - "cocoa-warts,INK_SACK:9,shroomtus"
+phelonalope:
+  material: INK_SACK
+  display-name: "&bPhelonalope Powder"
+  amount: 1
+  glows: true
+  meta-value: 14
+  effects:
+    - "SPEED,60,1"
+    - "JUMP,45,2"
+  recipe:
+    - "sugar-wheat,INK_SACK:1,mumpkin"
+    - "INK_SACK:14,potarrot,INK_SACK:14"
+    - "cocoa-warts,INK_SACK:1,shroomtus"
+
 

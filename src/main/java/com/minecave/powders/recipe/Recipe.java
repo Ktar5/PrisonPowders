@@ -28,11 +28,25 @@ public class Recipe {
 
     public ShapedRecipe toShapedRecipe(ItemStack endItem) {
         ShapedRecipe recipe = new ShapedRecipe(endItem);
-        recipe.shape("ABC", "DEF", "GHI");
         char c = 'A';
+
+        StringBuilder recipeString = new StringBuilder("         ");
         for (int i = 0; i < RecipeSpot.values().length; i++) {
-            recipe.setIngredient((char) (c + i), itemList.get(RecipeSpot.values()[i]).getType());
+            if(itemList.get(RecipeSpot.values()[i]).getType() != Material.AIR){
+                recipeString.setCharAt(i, (char) (c + i));
+            }
         }
+        recipeString.insert(3,",").insert(7, ",");
+        String[] parts = recipeString.toString().split(Pattern.quote(","));
+        recipe.shape(parts[0], parts[1], parts[2]);
+        for (int i = 0; i < RecipeSpot.values().length; i++) {
+            Material mat = itemList.get(RecipeSpot.values()[i]).getType();
+            int dmg = itemList.get(RecipeSpot.values()[i]).getDurability();
+            if(!mat.equals(Material.AIR)){
+                recipe.setIngredient((char) (c + i), mat, dmg);
+            }
+        }
+
         return recipe;
     }
 
@@ -57,6 +71,9 @@ public class Recipe {
     }
 
     public boolean areItemsEqual(ItemStack s1, ItemStack s2) {
+        if(s2.getType().equals(Material.AIR) && s1.getType().equals(Material.AIR)){
+            return true;
+        }
         return s1.equals(s2) || s1.toString().equals(s2.toString().split(Pattern.quote(", internal"))[0] + "}}");
     }
 
